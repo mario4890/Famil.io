@@ -28,11 +28,15 @@ class Wedding extends AbstractFact implements Famillio\Model\Person\Biography\Fa
      */
     private $name;
     
-     public function __construct(
-                                Name $name
-                                )
+     public function __construct(Identifier $identifier,
+                                Description $description,
+                                Name $name)
     {
         $this->name         = $name;
+
+        $this->setIdentity($identifier);
+        $this->setDescription($description);
+        $this->setStatus(Status::get(Status::CURRENT));
     }
     
     /**
@@ -43,9 +47,11 @@ class Wedding extends AbstractFact implements Famillio\Model\Person\Biography\Fa
         return Text::get('Wedding');
     }
 
+    /**
+     * @return mixed
+     */
     public function getName() : Name
     {
         return $this->name;
     }
-    
 }
