@@ -47,4 +47,5 @@ class Wedding extends AbstractFact implements Famillio\Model\Person\Biography\Fa
     {
         return $this->name;
     }
+    
 }
